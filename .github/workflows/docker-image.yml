@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: 'sorim0418/hostsvc-cd'
-          token: ${{ secret.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
       - name: 2. Change Docker Tag
         run: |
           sed -i "s/image: sorim\/node-app:.*/images: sorim\/node-app:${{ github.sha }}/g" hostservice-deploy.yml

@@ -19,8 +19,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: 3. Build and push
       id: docker_build
-      uses: dpcker/build-push-action@v2
+      uses: docker/build-push-action@v2
       with:
        push: true
        tags: sorim/hostservice:${{ github.sha }} #절대 latest 쓰지 말것
-       

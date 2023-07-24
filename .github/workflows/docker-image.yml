@@ -33,7 +33,7 @@ jobs:
       - name: 1.Checkout
         uses: actions/checkout@v3
         with:
-          repository: 'sorim0418/hostsvc-cd'
+          repository: 'sorim/hostsvc-cd'
           token: ${{ secrets.GH_TOKEN }}
       - name: 2. Change Docker Tag
         run: |

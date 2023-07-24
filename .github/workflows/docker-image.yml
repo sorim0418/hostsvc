@@ -1,0 +1,13 @@
+name: Host Service CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: [".js"]
+    
+    
+jobs:
+
+  buildImage: 
+    runs-on: ubuntu-latest
+    

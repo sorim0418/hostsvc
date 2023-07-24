@@ -1,13 +1,26 @@
 name: Host Service CI
-
 on:
   push:
-    branches: [ "main" ]
-    paths: [".js"]
-    
-    
+    branches:
+      - 'main'
+    paths:
+      - '*.js'
 jobs:
-
-  buildImage: 
+  buildImage:
     runs-on: ubuntu-latest
-    
+    steps: 
+    - name: 1.Checkout
+      uses: actions/checkout@v3
+
+    - name: 2.Login to DockerHub 
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: 3. Build and push
+      id: docker_build
+      uses: dpcker/build-push-action@v2
+      with:
+       push: true
+       tags: sorim/hostservice:${{ github.sha }} #절대 latest 쓰지 말것
+       

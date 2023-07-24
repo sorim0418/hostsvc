@@ -28,6 +28,7 @@ jobs:
        tags: sorim/hostservice:${{ github.sha }} #절대 latest 쓰지 말것
   updateYaml:
     runs-on: ubuntu-latest
+    needs: buildImage #앞에가 성공해야 이걸 성공할수 있다는 조건걸어둠
     steps:
       - name: 1.Checkout
         uses: actions/checkout@v3
@@ -39,5 +40,5 @@ jobs:
           sed "s/image: sorim\/node-app:.*/images: sorim\/node-app:${{ github.sha }}"
           git config --global user.email "sorim09010418@gmail.com"
           git config --global user.name "sorim"
-          git commit -am "triggered by github action"
+          git commit -am "triggered by github action!!!"
           git push origin main
